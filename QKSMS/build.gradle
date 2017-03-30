@@ -28,7 +28,7 @@ android {
     }
 
     compileSdkVersion 22
-    buildToolsVersion '23.0.2'
+    buildToolsVersion '25.0.2'
 
     defaultConfig {
         versionCode 135
@@ -45,7 +45,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'qksms-proguard.pro'
         }
         debug {
-            minifyEnabled true
+            minifyEnabled false
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'qksms-proguard.pro'
         }
