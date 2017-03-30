@@ -23,12 +23,21 @@ public class SpamKeywordSensor implements ISensor {
         _cache = cache;
     }
 
+    private String normalizeBody(String body) {
+        body = body.replace('\r', ' ').replace('\n', ' ');
+        while(body.contains("  ")) {
+            body = body.replace("  ", " ");
+        }
+        body = body.replace('\t', ' ').trim();
+        return body;
+    }
+
     @Override
     public List<Short> analyze(Message msg, Context context) {
         final short NO_UNSAFE_KEYWORD = 201;
 
         List<Keyword> keywords = _cache.getKeywords();
-        String body = msg.getBody().toString().trim();
+        String body = normalizeBody(msg.getBody().toString());
         if(body.isEmpty()) {
             return null;
         }

@@ -30,6 +30,9 @@ public class Repository implements IRepository {
         result.add(new Keyword("iapad", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         result.add(new Keyword("sheidzine", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         result.add(new Keyword("fasdakleb", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
+        result.add(new Keyword("pasdakleb", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
+        result.add(new Keyword("pasad", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
+        result.add(new Keyword("fasad", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         result.add(new Keyword("laridan", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         result.add(new Keyword("gakidvashia", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         result.add(new Keyword("miighe", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
@@ -38,11 +41,13 @@ public class Repository implements IRepository {
         result.add(new Keyword("smsoff", KEYWORD_MODIFIER_CRITICAL, KeywordType.WORD));
         result.add(new Keyword("nosms", KEYWORD_MODIFIER_CRITICAL, KeywordType.WORD));
 
-        result.add(new Keyword("\\d{5}", KEYWORD_MODIFIER_HIGH, KeywordType.REGEX));
-        result.add(new Keyword("no \\d{5}", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        result.add(new Keyword("no \\d{5}", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        result.add(new Keyword("no-\\d{5}", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        result.add(new Keyword("off \\d{5}", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        result.add(new Keyword("\\b\\w+\\s\\d{5}\\b", KEYWORD_MODIFIER_HIGH, KeywordType.REGEX));
+        result.add(new Keyword("\\bno.\\d{5}\\b", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        result.add(new Keyword("\\boff.\\d{5}\\b", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        result.add(new Keyword("\\bnosms\\d{5}\\b", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        result.add(new Keyword("\\bnosms.\\d{5}\\b", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        result.add(new Keyword("\\bstop\\d{5}\\b", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        result.add(new Keyword("\\bstop.\\d{5}\\b", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
         return result;
     }
 
