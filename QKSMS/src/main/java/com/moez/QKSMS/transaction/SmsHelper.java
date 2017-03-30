@@ -13,6 +13,7 @@ import android.telephony.SmsManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
+
 import com.google.android.mms.MmsException;
 import com.google.android.mms.pdu_alt.CharacterSets;
 import com.google.android.mms.pdu_alt.EncodedStringValue;
@@ -478,6 +479,28 @@ public class SmsHelper {
 
         try {
             cursor = context.getContentResolver().query(SMS_CONTENT_PROVIDER, new String[]{COLUMN_ID}, FAILED_SELECTION, null, sortDateDesc);
+            cursor.moveToFirst();
+            for (int i = 0; i < cursor.getCount(); i++) {
+                messages.add(new Message(context, cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID))));
+                cursor.moveToNext();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        return messages;
+    }
+
+    public static List<Message> getMessagesGeneric(Context context, Uri uri, String selectClause, String[] selectArgs, String sort) {
+        Cursor cursor = null;
+        List<Message> messages = new ArrayList<>();
+
+        try {
+            cursor = context.getContentResolver().query(uri, new String[]{COLUMN_ID}, selectClause, selectArgs, sort);
             cursor.moveToFirst();
             for (int i = 0; i < cursor.getCount(); i++) {
                 messages.add(new Message(context, cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID))));

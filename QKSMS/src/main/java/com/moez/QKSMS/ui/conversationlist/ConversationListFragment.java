@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,6 +23,7 @@ import android.widget.ImageView;
 import com.melnykov.fab.FloatingActionButton;
 import com.moez.QKSMS.QKSMSApp;
 import com.moez.QKSMS.R;
+import com.moez.QKSMS.antispam.AnalyzerAggregate;
 import com.moez.QKSMS.common.BlockedConversationHelper;
 import com.moez.QKSMS.common.DialogHelper;
 import com.moez.QKSMS.common.LiveViewManager;
@@ -29,6 +31,7 @@ import com.moez.QKSMS.common.utils.ColorUtils;
 import com.moez.QKSMS.data.Contact;
 import com.moez.QKSMS.data.Conversation;
 import com.moez.QKSMS.data.ConversationLegacy;
+import com.moez.QKSMS.data.Message;
 import com.moez.QKSMS.enums.QKPreference;
 import com.moez.QKSMS.transaction.SmsHelper;
 import com.moez.QKSMS.ui.MainActivity;
@@ -40,6 +43,7 @@ import com.moez.QKSMS.ui.dialog.conversationdetails.ConversationDetailsDialog;
 import com.moez.QKSMS.ui.messagelist.MessageListActivity;
 import com.moez.QKSMS.ui.settings.SettingsFragment;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -225,6 +229,45 @@ public class ConversationListFragment extends QKFragment implements LoaderManage
 
             case R.id.menu_done:
                 mAdapter.disableMultiSelectMode(true);
+                return true;
+
+            case R.id.menu_scan:
+                AnalyzerAggregate analyzer = AnalyzerAggregate.Instance();
+                for(int i = 0; i < mAdapter.getCount(); ++i) {
+                    boolean contactFound = false;
+                    Conversation conversation = mAdapter.getItem(i);
+                    for(Contact contact: conversation.getRecipients()) {
+                        if(contact.existsInDatabase()) {
+                            contactFound = true;
+                            break;
+                        }
+                    }
+
+                    if(contactFound) continue;
+
+                    List<Message> messages = SmsHelper.getMessagesGeneric(mContext,
+                            SmsHelper.RECEIVED_MESSAGE_CONTENT_PROVIDER,
+                            "thread_id = ?",
+                            new String[] { String.valueOf(conversation.getThreadId()) },
+                            "date DESC LIMIT 3");
+
+                    boolean spam = false;
+                    for(Message msg: messages) {
+                        String sender = msg.getAddress();
+
+                        if(analyzer.isSpam(msg, mContext)) {
+                            spam = true;
+                            Log.d("FOUND", "SPAM");
+                            Log.d("FOUND", msg.getBody());
+                            break;
+                        }
+                    }
+
+                    if(spam) {
+                        mAdapter.toggleSelection(conversation.getThreadId(), conversation);
+                    }
+                }
+
                 return true;
         }
 
