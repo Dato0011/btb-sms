@@ -1,5 +1,7 @@
 package com.moez.QKSMS.antispam.sensors;
 
+import android.content.Context;
+
 import com.moez.QKSMS.data.Message;
 
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ import java.util.List;
 
 public class SpamSenderIdSensor implements ISensor {
     @Override
-    public List<Short> analyze(Message msg) {
+    public List<Short> analyze(Message msg, Context context) {
         final short SENDER_ID_WORD   = 102;
         final short SENDER_ID_NUMBER = 202;
 

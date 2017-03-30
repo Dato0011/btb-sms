@@ -1,5 +1,7 @@
 package com.moez.QKSMS.antispam.sensors;
 
+import android.content.Context;
+
 import com.moez.QKSMS.data.Message;
 
 import java.util.List;
@@ -9,5 +11,5 @@ import java.util.List;
  */
 
 public interface ISensor {
-    List<Short> analyze(Message msg);
+    List<Short> analyze(Message msg, Context context);
 }

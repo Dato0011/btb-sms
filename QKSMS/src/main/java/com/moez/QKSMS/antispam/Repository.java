@@ -14,8 +14,9 @@ public class Repository implements IRepository {
     private final short KEYWORD_MODIFIER_CRITICAL = 101;
     private final short SENDER_ID_WORD = 102;
 
-    private final short NO_UNSAFE_KEYWORD  = 201;
-    private final short SENDER_ID_NUMBER   = 202;
+    private final short NO_UNSAFE_KEYWORD   = 201;
+    private final short SENDER_ID_NUMBER    = 202;
+    private final short THREAD_HAS_SENT_SMS = 203;
 
     @Override
     public List<Keyword> getKeywords() {
@@ -53,6 +54,7 @@ public class Repository implements IRepository {
         result.put(SENDER_ID_WORD, new ScoreValue(KEYWORD_MODIFIER_CRITICAL, (short)30));
         result.put(NO_UNSAFE_KEYWORD, new ScoreValue(KEYWORD_MODIFIER_CRITICAL, (short)-30));
         result.put(SENDER_ID_NUMBER, new ScoreValue(KEYWORD_MODIFIER_CRITICAL, (short)-30));
+        result.put(THREAD_HAS_SENT_SMS, new ScoreValue(KEYWORD_MODIFIER_CRITICAL, (short)-50));
         return result;
     }
 
@@ -72,7 +74,12 @@ public class Repository implements IRepository {
 
         List<ScoreCombination> safes = new ArrayList<>();
         safes.add(new ScoreCombination(NO_UNSAFE_KEYWORD, SENDER_ID_NUMBER, (short) 3));
+        safes.add(new ScoreCombination(NO_UNSAFE_KEYWORD, THREAD_HAS_SENT_SMS, (short) 4));
         result.put(NO_UNSAFE_KEYWORD, safes);
+
+        List<ScoreCombination> safes2 = new ArrayList<>();
+        safes.add(new ScoreCombination(SENDER_ID_NUMBER, THREAD_HAS_SENT_SMS, (short) 4));
+        result.put(SENDER_ID_NUMBER, safes);
 
         return result;
     }

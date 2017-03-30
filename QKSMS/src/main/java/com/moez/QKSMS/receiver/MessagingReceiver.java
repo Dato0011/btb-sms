@@ -115,7 +115,7 @@ public class MessagingReceiver extends BroadcastReceiver {
             message.markSeen();
             BlockedConversationHelper.FutureBlockedConversationObservable.getInstance().futureBlockedConversationReceived();
         }
-        else if(message.getContactId() == 0 && analyzer.isSpam(message)) {
+        else if(message.getContactId() == 0 && analyzer.isSpam(message, mContext)) {
             BlockedConversationHelper.blockConversation(mPrefs, message.getThreadId());
             message.markSeen();
             BlockedConversationHelper.FutureBlockedConversationObservable.getInstance().futureBlockedConversationReceived();

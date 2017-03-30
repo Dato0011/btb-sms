@@ -1,5 +1,7 @@
 package com.moez.QKSMS.antispam.sensors;
 
+import android.content.Context;
+
 import com.moez.QKSMS.antispam.Cache;
 import com.moez.QKSMS.antispam.Keyword;
 import com.moez.QKSMS.antispam.KeywordType;
@@ -22,7 +24,7 @@ public class SpamKeywordSensor implements ISensor {
     }
 
     @Override
-    public List<Short> analyze(Message msg) {
+    public List<Short> analyze(Message msg, Context context) {
         final short NO_UNSAFE_KEYWORD = 201;
 
         List<Keyword> keywords = _cache.getKeywords();
