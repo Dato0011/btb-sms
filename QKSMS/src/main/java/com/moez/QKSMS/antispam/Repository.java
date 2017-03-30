@@ -36,10 +36,6 @@ public class Repository implements IRepository {
         result.add(new Keyword("laridan", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         result.add(new Keyword("gakidvashia", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         result.add(new Keyword("miighe", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("sms no", KEYWORD_MODIFIER_CRITICAL, KeywordType.WORD));
-        result.add(new Keyword("sms off", KEYWORD_MODIFIER_CRITICAL, KeywordType.WORD));
-        result.add(new Keyword("smsoff", KEYWORD_MODIFIER_CRITICAL, KeywordType.WORD));
-        result.add(new Keyword("nosms", KEYWORD_MODIFIER_CRITICAL, KeywordType.WORD));
 
         result.add(new Keyword("\\b\\w+\\s\\d{5}\\b", KEYWORD_MODIFIER_HIGH, KeywordType.REGEX));
         result.add(new Keyword("\\bno.\\d{5}\\b", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
