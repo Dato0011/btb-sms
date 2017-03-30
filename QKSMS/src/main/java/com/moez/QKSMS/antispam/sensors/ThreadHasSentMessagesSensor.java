@@ -13,7 +13,7 @@ import java.util.List;
  * Created by dato0 on 3/30/2017.
  */
 
-public class ThreadHasSentMessages implements ISensor {
+public class ThreadHasSentMessagesSensor implements ISensor {
     @Override
     public List<Short> analyze(Message msg, Context context) {
         final short THREAD_HAS_SENT_SMS = 203;

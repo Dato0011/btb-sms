@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.moez.QKSMS.antispam.sensors.SpamKeywordSensor;
 import com.moez.QKSMS.antispam.sensors.SpamSenderIdSensor;
-import com.moez.QKSMS.antispam.sensors.ThreadHasSentMessages;
+import com.moez.QKSMS.antispam.sensors.ThreadHasSentMessagesSensor;
 import com.moez.QKSMS.data.Message;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class AnalyzerAggregate {
     private static AnalyzerAggregate _instance;
     private final SpamKeywordSensor _keywordSensor;
     private final SpamSenderIdSensor _senderIdSensor;
-    private final ThreadHasSentMessages _sentMsgSensor;
+    private final ThreadHasSentMessagesSensor _sentMsgSensor;
     private final Cache _cache;
 
     private short calculateCominations() {
@@ -33,7 +33,7 @@ public class AnalyzerAggregate {
         _cache = new Cache(new Repository());
         _keywordSensor = new SpamKeywordSensor(_cache);
         _senderIdSensor = new SpamSenderIdSensor();
-        _sentMsgSensor = new ThreadHasSentMessages();
+        _sentMsgSensor = new ThreadHasSentMessagesSensor();
     }
 
     private int countModifiers(List<Short> modifiers, short modifier) {
