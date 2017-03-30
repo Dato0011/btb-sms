@@ -18,8 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+
 import com.melnykov.fab.FloatingActionButton;
 import com.moez.QKSMS.QKSMSApp;
 import com.moez.QKSMS.R;
@@ -43,6 +42,9 @@ import com.moez.QKSMS.ui.settings.SettingsFragment;
 
 import java.util.Observable;
 import java.util.Observer;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 
 public class ConversationListFragment extends QKFragment implements LoaderManager.LoaderCallbacks<Cursor>,
@@ -206,7 +208,7 @@ public class ConversationListFragment extends QKFragment implements LoaderManage
 
             case R.id.menu_block:
                 for (long threadId : mAdapter.getSelectedItems().keySet()) {
-                    if (getBlockedWeight() > 0) {
+                    if (mShowBlocked) {
                         BlockedConversationHelper.unblockConversation(mPrefs, threadId);
                     } else {
                         BlockedConversationHelper.blockConversation(mPrefs, threadId);
