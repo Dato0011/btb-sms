@@ -109,6 +109,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         keywords.add(new Keyword("\\boff.\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
         keywords.add(new Keyword("\\bnosms\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
         keywords.add(new Keyword("\\bnosms.\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        keywords.add(new Keyword("\\bno.sms.\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
         keywords.add(new Keyword("\\bstop\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
         keywords.add(new Keyword("\\bstop.\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
 
