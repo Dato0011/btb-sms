@@ -1,5 +1,11 @@
 package com.moez.QKSMS.antispam;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.moez.QKSMS.db.MySQLiteHelper;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,85 +16,129 @@ import java.util.Map;
  */
 
 public class Repository implements IRepository {
-    private final short KEYWORD_MODIFIER_HIGH = 100;
-    private final short KEYWORD_MODIFIER_CRITICAL = 101;
-    private final short SENDER_ID_WORD = 102;
+    public static final short META_THRESHOLD = 1;
 
-    private final short NO_UNSAFE_KEYWORD   = 201;
-    private final short SENDER_ID_NUMBER    = 202;
-    private final short THREAD_HAS_SENT_SMS = 203;
+    public static final short KEYWORD_MODIFIER_HIGH = 100;
+    public static final short KEYWORD_MODIFIER_CRITICAL = 101;
+    public static final short SENDER_ID_WORD = 102;
+
+    public static final short NO_UNSAFE_KEYWORD   = 201;
+    public static final short SENDER_ID_NUMBER    = 202;
+    public static final short THREAD_HAS_SENT_SMS = 203;
+
+    private final MySQLiteHelper dbFactory;
+
+    public Repository(Context context) {
+        dbFactory = new MySQLiteHelper(context);
+    }
+
+    private Keyword cursorToKeyword(Cursor cursor) {
+        Keyword keyword = new Keyword();
+        keyword.setKeyword(cursor.getString(0));
+        keyword.setModifier(cursor.getShort(1));
+        keyword.setType(KeywordType.values()[cursor.getInt(2)]);
+        return keyword;
+    }
+
+    private ScoreValue cursorToScoreValue(Cursor cursor) {
+        ScoreValue score = new ScoreValue();
+        score.setId(cursor.getShort(0));
+        score.setValue(cursor.getShort(1));
+        return score;
+    }
+
+    private ScoreCombination cursorToScoreCombination(Cursor cursor) {
+        ScoreCombination combination = new ScoreCombination();
+        combination.setPrimary(cursor.getShort(0));
+        combination.setSecondary(cursor.getShort(1));
+        combination.setMultiplier(cursor.getShort(2));
+        return combination;
+    }
 
     @Override
     public List<Keyword> getKeywords() {
+        SQLiteDatabase database = dbFactory.getReadableDatabase();
         List<Keyword> result = new ArrayList<Keyword>();
-        result.add(new Keyword("ichqare", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("gtavazob", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("dagvikavshirdi", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("servisi", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("aqcia", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("iafad", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("iapad", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("sheidzine", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("fasdakleb", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("pasdakleb", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("pasad", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("fasad", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("laridan", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("gakidvashia", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
-        result.add(new Keyword("miighe", KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
 
-        result.add(new Keyword("\\d{2}%", KEYWORD_MODIFIER_HIGH, KeywordType.REGEX));
-        result.add(new Keyword("\\b\\w+\\s\\d{5}\\b", KEYWORD_MODIFIER_HIGH, KeywordType.REGEX));
-        result.add(new Keyword("\\bstop.\\d{5}\\b", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        result.add(new Keyword("\\bno.\\d{5}\\b", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        result.add(new Keyword("\\boff.\\d{5}\\b", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        result.add(new Keyword("\\bnosms\\d{5}\\b", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        result.add(new Keyword("\\bnosms.\\d{5}\\b", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        result.add(new Keyword("\\bstop\\d{5}\\b", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        result.add(new Keyword("\\bstop.\\d{5}\\b", KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_KEYWORD,
+                new String[] { MySQLiteHelper.COLUMN_KEYWORD, MySQLiteHelper.COLUMN_MODIFIER, MySQLiteHelper.COLUMN_TYPE},
+                null, null, null, null, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            result.add(cursorToKeyword(cursor));
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        database.close();
         return result;
     }
 
     @Override
     public Map<Short, ScoreValue> getScoreValues() {
-        Map<Short, ScoreValue> result = new HashMap<Short, ScoreValue>();
-        result.put(KEYWORD_MODIFIER_HIGH, new ScoreValue(KEYWORD_MODIFIER_HIGH, (short)30));
-        result.put(KEYWORD_MODIFIER_CRITICAL, new ScoreValue(KEYWORD_MODIFIER_CRITICAL, (short)50));
-        result.put(SENDER_ID_WORD, new ScoreValue(KEYWORD_MODIFIER_CRITICAL, (short)30));
-        result.put(NO_UNSAFE_KEYWORD, new ScoreValue(KEYWORD_MODIFIER_CRITICAL, (short)-30));
-        result.put(SENDER_ID_NUMBER, new ScoreValue(KEYWORD_MODIFIER_CRITICAL, (short)-30));
-        result.put(THREAD_HAS_SENT_SMS, new ScoreValue(KEYWORD_MODIFIER_CRITICAL, (short)-50));
+        SQLiteDatabase database = dbFactory.getReadableDatabase();
+        Map<Short, ScoreValue> result = new HashMap<>();
+
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_SCORE_VALUE,
+                new String[] { MySQLiteHelper.COLUMN_ID, MySQLiteHelper.COLUMN_VALUE },
+                null, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            ScoreValue val = cursorToScoreValue(cursor);
+            result.put(val.getId(), val);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        database.close();
         return result;
     }
 
     @Override
     public Map<Short, List<ScoreCombination>> getScoreCombinations() {
-        Map<Short, List<ScoreCombination>> result = new HashMap<Short, List<ScoreCombination>>();
-        List<ScoreCombination> criticals = new ArrayList<ScoreCombination>();
-        criticals.add(new ScoreCombination(KEYWORD_MODIFIER_CRITICAL, KEYWORD_MODIFIER_HIGH, (short)5));
-        criticals.add(new ScoreCombination(KEYWORD_MODIFIER_CRITICAL, KEYWORD_MODIFIER_CRITICAL, (short)5));
-        criticals.add(new ScoreCombination(KEYWORD_MODIFIER_CRITICAL, SENDER_ID_WORD, (short)5));
-        result.put(KEYWORD_MODIFIER_CRITICAL, criticals);
+        SQLiteDatabase database = dbFactory.getReadableDatabase();
+        Map<Short, List<ScoreCombination>> result = new HashMap<>();
 
-        List<ScoreCombination> highs = new ArrayList<ScoreCombination>();
-        highs.add(new ScoreCombination(KEYWORD_MODIFIER_HIGH, KEYWORD_MODIFIER_HIGH, (short)2));
-        highs.add(new ScoreCombination(KEYWORD_MODIFIER_HIGH, SENDER_ID_WORD, (short)3));
-        result.put(KEYWORD_MODIFIER_HIGH, highs);
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_COMBINATION,
+                new String[] { MySQLiteHelper.COLUMN_PRIMARY, MySQLiteHelper.COLUMN_SECONDARY, MySQLiteHelper.COLUMN_MULTIPLIER },
+                null, null, null, null, null);
 
-        List<ScoreCombination> safes = new ArrayList<>();
-        safes.add(new ScoreCombination(NO_UNSAFE_KEYWORD, SENDER_ID_NUMBER, (short) 3));
-        safes.add(new ScoreCombination(NO_UNSAFE_KEYWORD, THREAD_HAS_SENT_SMS, (short) 4));
-        result.put(NO_UNSAFE_KEYWORD, safes);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            List<ScoreCombination> list;
+            ScoreCombination combination = cursorToScoreCombination(cursor);
+            if(result.containsKey(combination.getPrimary())) {
+                list = result.get(combination.getPrimary());
+            }
+            else {
+                list = new ArrayList<>();
+                result.put(combination.getPrimary(), list);
+            }
 
-        List<ScoreCombination> safes2 = new ArrayList<>();
-        safes.add(new ScoreCombination(SENDER_ID_NUMBER, THREAD_HAS_SENT_SMS, (short) 4));
-        result.put(SENDER_ID_NUMBER, safes);
+            list.add(combination);
+            cursor.moveToNext();
+        }
 
+        cursor.close();
+        database.close();
         return result;
     }
 
     @Override
     public short getThreshold() {
-        return 150;
+        SQLiteDatabase database = dbFactory.getReadableDatabase();
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_META,
+                new String[] { MySQLiteHelper.COLUMN_VALUE },
+                MySQLiteHelper.COLUMN_ID + "=?",
+                new String[] { String.valueOf(META_THRESHOLD) },
+                null, null, null);
+
+        cursor.moveToFirst();
+        short result = cursor.getShort(0);
+        cursor.close();
+        database.close();
+
+        return result;
     }
 }

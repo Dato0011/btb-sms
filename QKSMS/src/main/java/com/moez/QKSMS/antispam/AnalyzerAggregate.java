@@ -30,7 +30,7 @@ public class AnalyzerAggregate {
     }
 
     public AnalyzerAggregate() {
-        _cache = new Cache(new Repository());
+        _cache = new Cache();
         _keywordSensor = new SpamKeywordSensor(_cache);
         _senderIdSensor = new SpamSenderIdSensor();
         _sentMsgSensor = new ThreadHasSentMessagesSensor();
@@ -45,8 +45,8 @@ public class AnalyzerAggregate {
     }
 
     public boolean isSpam(Message msg, Context context) {
-        Map<Short, ScoreValue> scores = _cache.getScoreValues();
-        Map<Short, List<ScoreCombination>> combinations = _cache.getCombinations();
+        Map<Short, ScoreValue> scores = _cache.getScoreValues(context);
+        Map<Short, List<ScoreCombination>> combinations = _cache.getCombinations(context);
         List<Short> modifiers = new ArrayList<Short>();
 
         modifiers.addAll(_keywordSensor.analyze(msg, context));
@@ -89,7 +89,7 @@ public class AnalyzerAggregate {
 
         Log.d("Analyzer", msg.getBody());
         Log.d("Analyzer", "Score: " + totalScore);
-        return totalScore >= _cache.getSpamThreshold();
+        return totalScore >= _cache.getSpamThreshold(context);
     }
 
     public static AnalyzerAggregate Instance() {

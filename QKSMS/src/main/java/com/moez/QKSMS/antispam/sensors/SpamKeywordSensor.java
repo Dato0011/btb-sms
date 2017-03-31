@@ -29,14 +29,14 @@ public class SpamKeywordSensor implements ISensor {
             body = body.replace("  ", " ");
         }
         body = body.replace('\t', ' ').trim();
-        return body;
+        return body.toLowerCase();
     }
 
     @Override
     public List<Short> analyze(Message msg, Context context) {
         final short NO_UNSAFE_KEYWORD = 201;
 
-        List<Keyword> keywords = _cache.getKeywords();
+        List<Keyword> keywords = _cache.getKeywords(context);
         String body = normalizeBody(msg.getBody().toString());
         if(body.isEmpty()) {
             return null;
