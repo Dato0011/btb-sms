@@ -8,6 +8,10 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/menu_scan"
+        android:title="Scan for Spam" />
+
+    <item
         android:id="@+id/menu_settings"
         android:title="@string/menu_settings" />
 

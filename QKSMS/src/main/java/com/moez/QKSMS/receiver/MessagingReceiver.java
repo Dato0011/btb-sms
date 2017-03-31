@@ -9,6 +9,8 @@ import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.telephony.SmsMessage;
 import android.util.Log;
+
+import com.moez.QKSMS.antispam.AnalyzerAggregate;
 import com.moez.QKSMS.common.BlockedConversationHelper;
 import com.moez.QKSMS.common.ConversationPrefsHelper;
 import com.moez.QKSMS.common.utils.PackageUtils;
@@ -17,6 +19,7 @@ import com.moez.QKSMS.service.NotificationService;
 import com.moez.QKSMS.transaction.NotificationManager;
 import com.moez.QKSMS.transaction.SmsHelper;
 import com.moez.QKSMS.ui.settings.SettingsFragment;
+
 import org.mistergroup.muzutozvednout.ShouldIAnswerBinder;
 
 public class MessagingReceiver extends BroadcastReceiver {
@@ -98,14 +101,21 @@ public class MessagingReceiver extends BroadcastReceiver {
     private void insertMessageAndNotify() {
         mUri = SmsHelper.addMessageToInbox(mContext, mAddress, mBody, mDate);
 
+        AnalyzerAggregate analyzer = AnalyzerAggregate.Instance();
         Message message = new Message(mContext, mUri);
         ConversationPrefsHelper conversationPrefs = new ConversationPrefsHelper(mContext, message.getThreadId());
+        System.out.println(message.getContactId());
 
         // The user has set messages from this address to be blocked, but we at the time there weren't any
         // messages from them already in the database, so we couldn't block any thread URI. Now that we have one,
         // we can block it, so that the conversation list adapter knows to ignore this thread in the main list
         if (BlockedConversationHelper.isFutureBlocked(mPrefs, mAddress)) {
             BlockedConversationHelper.unblockFutureConversation(mPrefs, mAddress);
+            BlockedConversationHelper.blockConversation(mPrefs, message.getThreadId());
+            message.markSeen();
+            BlockedConversationHelper.FutureBlockedConversationObservable.getInstance().futureBlockedConversationReceived();
+        }
+        else if(message.getContactId() == 0 && analyzer.isSpam(message, mContext)) {
             BlockedConversationHelper.blockConversation(mPrefs, message.getThreadId());
             message.markSeen();
             BlockedConversationHelper.FutureBlockedConversationObservable.getInstance().futureBlockedConversationReceived();

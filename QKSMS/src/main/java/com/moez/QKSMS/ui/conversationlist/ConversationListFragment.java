@@ -7,6 +7,7 @@ import android.content.Loader;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.PorterDuff;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,12 +18,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
 import com.melnykov.fab.FloatingActionButton;
 import com.moez.QKSMS.QKSMSApp;
 import com.moez.QKSMS.R;
+import com.moez.QKSMS.antispam.AnalyzerAggregate;
 import com.moez.QKSMS.common.BlockedConversationHelper;
 import com.moez.QKSMS.common.DialogHelper;
 import com.moez.QKSMS.common.LiveViewManager;
@@ -30,6 +35,7 @@ import com.moez.QKSMS.common.utils.ColorUtils;
 import com.moez.QKSMS.data.Contact;
 import com.moez.QKSMS.data.Conversation;
 import com.moez.QKSMS.data.ConversationLegacy;
+import com.moez.QKSMS.data.Message;
 import com.moez.QKSMS.enums.QKPreference;
 import com.moez.QKSMS.transaction.SmsHelper;
 import com.moez.QKSMS.ui.MainActivity;
@@ -41,8 +47,13 @@ import com.moez.QKSMS.ui.dialog.conversationdetails.ConversationDetailsDialog;
 import com.moez.QKSMS.ui.messagelist.MessageListActivity;
 import com.moez.QKSMS.ui.settings.SettingsFragment;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 
 public class ConversationListFragment extends QKFragment implements LoaderManager.LoaderCallbacks<Cursor>,
@@ -54,6 +65,9 @@ public class ConversationListFragment extends QKFragment implements LoaderManage
     @Bind(R.id.empty_state_icon) ImageView mEmptyStateIcon;
     @Bind(R.id.conversations_list) RecyclerView mRecyclerView;
     @Bind(R.id.fab) FloatingActionButton mFab;
+    @Bind(R.id.progressBarHolder) FrameLayout progressBarHolder;
+    @Bind(R.id.progressBar) ProgressBar progressBar;
+    @Bind(R.id.progressText) TextView progressText;
 
     private ConversationListAdapter mAdapter;
     private LinearLayoutManager mLayoutManager;
@@ -61,6 +75,9 @@ public class ConversationListFragment extends QKFragment implements LoaderManage
     private SharedPreferences mPrefs;
     private MenuItem mBlockedItem;
     private boolean mShowBlocked = false;
+
+    private AlphaAnimation inAnimation;
+    private AlphaAnimation outAnimation;
 
     private boolean mViewHasLoaded = false;
 
@@ -206,7 +223,7 @@ public class ConversationListFragment extends QKFragment implements LoaderManage
 
             case R.id.menu_block:
                 for (long threadId : mAdapter.getSelectedItems().keySet()) {
-                    if (getBlockedWeight() > 0) {
+                    if (mShowBlocked) {
                         BlockedConversationHelper.unblockConversation(mPrefs, threadId);
                     } else {
                         BlockedConversationHelper.blockConversation(mPrefs, threadId);
@@ -224,9 +241,114 @@ public class ConversationListFragment extends QKFragment implements LoaderManage
             case R.id.menu_done:
                 mAdapter.disableMultiSelectMode(true);
                 return true;
+
+            case R.id.menu_scan:
+//                AnalyzerAggregate analyzer = AnalyzerAggregate.Instance();
+//                for(int i = 0; i < mAdapter.getCount(); ++i) {
+//                    boolean contactFound = false;
+//                    Conversation conversation = mAdapter.getItem(i);
+//                    for(Contact contact: conversation.getRecipients()) {
+//                        if(contact.existsInDatabase()) {
+//                            contactFound = true;
+//                            break;
+//                        }
+//                    }
+//
+//                    if(contactFound) continue;
+//
+//                    List<Message> messages = SmsHelper.getMessagesGeneric(mContext,
+//                            SmsHelper.RECEIVED_MESSAGE_CONTENT_PROVIDER,
+//                            "thread_id = ?",
+//                            new String[] { String.valueOf(conversation.getThreadId()) },
+//                            "date DESC LIMIT 3");
+//
+//                    boolean spam = false;
+//                    for(Message msg: messages) {
+//                        String sender = msg.getAddress();
+//
+//                        if(analyzer.isSpam(msg, mContext)) {
+//                            spam = true;
+//                            Log.d("FOUND", "SPAM");
+//                            Log.d("FOUND", msg.getBody());
+//                            break;
+//                        }
+//                    }
+//
+//                    if(spam) {
+//                        mAdapter.toggleSelection(conversation.getThreadId(), conversation);
+//                    }
+//                }
+                new SpamScannerTask().execute(0);
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private class SpamScannerTask extends AsyncTask<Integer, Integer, List<Conversation>> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBar.setMax(mAdapter.getCount());
+            inAnimation = new AlphaAnimation(0f, 1f);
+            inAnimation.setDuration(200);
+            progressBarHolder.setAnimation(inAnimation);
+            progressBarHolder.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected List<Conversation> doInBackground(Integer... integers) {
+            List<Conversation> result = new ArrayList<>();
+            AnalyzerAggregate analyzer = AnalyzerAggregate.Instance();
+            for (int i = 0; i < mAdapter.getCount(); ++i) {
+                publishProgress(i, mAdapter.getCount());
+                boolean contactFound = false;
+                Conversation conversation = mAdapter.getItem(i);
+                for (Contact contact : conversation.getRecipients()) {
+                    if (contact.existsInDatabase()) {
+                        contactFound = true;
+                        break;
+                    }
+                }
+
+                if (contactFound) continue;
+
+                List<Message> messages = SmsHelper.getMessagesGeneric(mContext,
+                        SmsHelper.RECEIVED_MESSAGE_CONTENT_PROVIDER,
+                        "thread_id = ?",
+                        new String[]{String.valueOf(conversation.getThreadId())},
+                        "date DESC LIMIT 3");
+
+                for (Message msg : messages) {
+                    if (analyzer.isSpam(msg, mContext)) {
+                        result.add(conversation);
+                        break;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            progressBar.setProgress(values[0]);
+            String str = String.valueOf(values[0]) + "/" + String.valueOf(values[1]);
+            progressText.setText(str);
+        }
+
+        @Override
+        protected void onPostExecute(List<Conversation> spams) {
+            super.onPostExecute(spams);
+            outAnimation = new AlphaAnimation(1f, 0f);
+            outAnimation.setDuration(200);
+            progressBarHolder.setAnimation(outAnimation);
+            progressBarHolder.setVisibility(View.GONE);
+
+            for(Conversation conversation: spams) {
+                mAdapter.toggleSelection(conversation.getThreadId(), conversation);
+            }
+        }
     }
 
     public boolean isShowingBlocked() {

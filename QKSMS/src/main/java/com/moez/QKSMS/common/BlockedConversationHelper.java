@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.provider.Telephony;
 import android.util.Log;
 import android.view.MenuItem;
+
 import com.moez.QKSMS.R;
 import com.moez.QKSMS.common.utils.PhoneNumberUtils;
 import com.moez.QKSMS.data.Conversation;
@@ -33,12 +34,14 @@ public class BlockedConversationHelper {
     public static void blockConversation(SharedPreferences prefs, long threadId) {
         Set<String> idStrings = prefs.getStringSet(SettingsFragment.BLOCKED_SENDERS, new HashSet<String>());
         idStrings.add(String.valueOf(threadId));
+        prefs.edit().remove(SettingsFragment.BLOCKED_SENDERS).apply();
         prefs.edit().putStringSet(SettingsFragment.BLOCKED_SENDERS, idStrings).apply();
     }
 
     public static void unblockConversation(SharedPreferences prefs, long threadId) {
         Set<String> idStrings = prefs.getStringSet(SettingsFragment.BLOCKED_SENDERS, new HashSet<String>());
         idStrings.remove(String.valueOf(threadId));
+        prefs.edit().remove(SettingsFragment.BLOCKED_SENDERS).apply();
         prefs.edit().putStringSet(SettingsFragment.BLOCKED_SENDERS, idStrings).apply();
     }
 
@@ -58,12 +61,14 @@ public class BlockedConversationHelper {
     public static void blockFutureConversation(SharedPreferences prefs, String address) {
         Set<String> idStrings = prefs.getStringSet(SettingsFragment.BLOCKED_FUTURE, new HashSet<String>());
         idStrings.add(address);
+        prefs.edit().remove(SettingsFragment.BLOCKED_SENDERS).apply();
         prefs.edit().putStringSet(SettingsFragment.BLOCKED_FUTURE, idStrings).apply();
     }
 
     public static void unblockFutureConversation(SharedPreferences prefs, String address) {
         Set<String> idStrings2 = prefs.getStringSet(SettingsFragment.BLOCKED_FUTURE, new HashSet<String>());
         idStrings2.remove(address);
+        prefs.edit().remove(SettingsFragment.BLOCKED_SENDERS).apply();
         prefs.edit().putStringSet(SettingsFragment.BLOCKED_FUTURE, idStrings2).apply();
     }
 
