@@ -2,6 +2,8 @@
 <resources>
 
     <string name="app_name">BitBlocker Messenger</string>
+    <string name="app_name_welcome">BitBlocker</string>
+    <string name="app_name_welcome_sub">messenger</string>
 
     <string-array name="background_values">
         <item>light</item>
