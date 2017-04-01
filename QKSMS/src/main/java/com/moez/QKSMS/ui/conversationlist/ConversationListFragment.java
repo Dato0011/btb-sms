@@ -43,6 +43,7 @@ import com.moez.QKSMS.ui.ThemeManager;
 import com.moez.QKSMS.ui.base.QKFragment;
 import com.moez.QKSMS.ui.base.RecyclerCursorAdapter;
 import com.moez.QKSMS.ui.compose.ComposeActivity;
+import com.moez.QKSMS.ui.dialog.QKDialog;
 import com.moez.QKSMS.ui.dialog.conversationdetails.ConversationDetailsDialog;
 import com.moez.QKSMS.ui.messagelist.MessageListActivity;
 import com.moez.QKSMS.ui.settings.SettingsFragment;
@@ -80,6 +81,8 @@ public class ConversationListFragment extends QKFragment implements LoaderManage
     private AlphaAnimation outAnimation;
 
     private boolean mViewHasLoaded = false;
+
+    private QKDialog ScanProgressDialog;
 
     // This does not hold the current position of the list, rather the position the list is pending being set to
     private int mPosition;
@@ -286,14 +289,30 @@ public class ConversationListFragment extends QKFragment implements LoaderManage
     }
 
     private class SpamScannerTask extends AsyncTask<Integer, Integer, List<Conversation>> {
+        private ProgressBar progressBarNew;
+        private TextView progressTextNew;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressBar.setMax(mAdapter.getCount());
-            inAnimation = new AlphaAnimation(0f, 1f);
-            inAnimation.setDuration(200);
-            progressBarHolder.setAnimation(inAnimation);
-            progressBarHolder.setVisibility(View.VISIBLE);
+            //progressBar.setMax(mAdapter.getCount());
+            //inAnimation = new AlphaAnimation(0f, 1f);
+            //inAnimation.setDuration(200);
+            //progressBarHolder.setAnimation(inAnimation);
+            //progressBarHolder.setVisibility(View.VISIBLE);
+
+            View view = View.inflate(mContext, R.layout.dialog_scan_progress, null);
+
+            progressTextNew = ((TextView) view.findViewById(R.id.progressText));
+
+            progressBarNew = ((ProgressBar) view.findViewById(R.id.progressBar));
+            progressBarNew.setMax(mAdapter.getCount());
+
+            ScanProgressDialog = new QKDialog();
+            ScanProgressDialog.setTitle("Scanning...")
+                    .setCancelOnTouchOutside(false)
+                    .setContext(mContext)
+                    .setCustomView(view)
+                    .show();
         }
 
         @Override
@@ -332,18 +351,22 @@ public class ConversationListFragment extends QKFragment implements LoaderManage
 
         @Override
         protected void onProgressUpdate(Integer... values) {
-            progressBar.setProgress(values[0]);
+            //progressBar.setProgress(values[0]);
+            progressBarNew.setProgress(values[0]);
             String str = String.valueOf(values[0]) + "/" + String.valueOf(values[1]);
-            progressText.setText(str);
+            //progressText.setText(str);
+            progressTextNew.setText(str);
         }
 
         @Override
         protected void onPostExecute(List<Conversation> spams) {
             super.onPostExecute(spams);
-            outAnimation = new AlphaAnimation(1f, 0f);
-            outAnimation.setDuration(200);
-            progressBarHolder.setAnimation(outAnimation);
-            progressBarHolder.setVisibility(View.GONE);
+            //outAnimation = new AlphaAnimation(1f, 0f);
+            //outAnimation.setDuration(200);
+            //progressBarHolder.setAnimation(outAnimation);
+            //progressBarHolder.setVisibility(View.GONE);
+
+            ScanProgressDialog.dismiss();
 
             for(Conversation conversation: spams) {
                 mAdapter.toggleSelection(conversation.getThreadId(), conversation);
