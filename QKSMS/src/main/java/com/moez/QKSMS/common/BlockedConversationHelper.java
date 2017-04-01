@@ -141,7 +141,7 @@ public class BlockedConversationHelper {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            mMenuItem.setVisible(mPrefs.getBoolean(SettingsFragment.BLOCKED_ENABLED, false));
+            mMenuItem.setVisible(mPrefs.getBoolean(SettingsFragment.BLOCKED_ENABLED, true));
             mMenuItem.setTitle(mContext.getString(mShowBlocked ? R.string.menu_messages : R.string.menu_blocked));
         }
 
