@@ -193,6 +193,8 @@ public class ConversationListFragment extends QKFragment implements LoaderManage
         } else {
             inflater.inflate(R.menu.conversations, menu);
             mContext.setTitle(mShowBlocked ? R.string.title_blocked : R.string.title_conversation_list);
+            MenuItem scan = (MenuItem)menu.findItem(R.id.menu_scan);
+            scan.setVisible(!mShowBlocked);
 
             mBlockedItem = menu.findItem(R.id.menu_blocked);
             BlockedConversationHelper.bindBlockedMenuItem(mContext, mPrefs, mBlockedItem, mShowBlocked);
@@ -320,6 +322,11 @@ public class ConversationListFragment extends QKFragment implements LoaderManage
             List<Conversation> result = new ArrayList<>();
             AnalyzerAggregate analyzer = AnalyzerAggregate.Instance();
             for (int i = 0; i < mAdapter.getCount(); ++i) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 publishProgress(i, mAdapter.getCount());
                 boolean contactFound = false;
                 Conversation conversation = mAdapter.getItem(i);
