@@ -28,6 +28,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.mariussoft.endlessjabber.sdk.EndlessJabberInterface;
 import com.moez.QKSMS.R;
 import com.moez.QKSMS.common.AnalyticsManager;
@@ -153,7 +154,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
     public static final String VERSION = "pref_key_version";
     public static final String CHANGELOG = "pref_key_changelog";
     public static final String THANKS = "pref_key_thanks";
-    public static final String GOOGLE_PLUS = "pref_key_google_plus";
+    public static final String WEBSITE = "pref_key_website";
     public static final String GITHUB = "pref_key_github";
     public static final String CROWDIN = "pref_key_crowdin";
 
@@ -163,8 +164,8 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
 
     public static final String CATEGORY_TAG = "settings_category_fragment_tag";
 
-    public static final String GOOGLE_PLUS_URL = "https://plus.google.com/communities/104505769539048913485";
-    public static final String GITHUB_URL = "https://github.com/qklabs/qksms";
+    public static final String BITBLOCKER_WEBSITE = "http://www.bitblocker.io";
+    public static final String GITHUB_URL = "https://github.com/Dato0011/btb-sms";
     public static final String CROWDIN_URL = "https://crowdin.com/project/qksms";
 
     private QKActivity mContext;
@@ -659,8 +660,8 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
             case DONATE:
                 DonationManager.getInstance(mContext).showDonateDialog();
                 break;
-            case GOOGLE_PLUS:
-                startBrowserIntent(GOOGLE_PLUS_URL);
+            case WEBSITE:
+                startBrowserIntent(BITBLOCKER_WEBSITE);
                 break;
             case GITHUB:
                 startBrowserIntent(GITHUB_URL);

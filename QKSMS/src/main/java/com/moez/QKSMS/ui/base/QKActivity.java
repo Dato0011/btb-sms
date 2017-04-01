@@ -24,11 +24,10 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import com.android.volley.RequestQueue;
 import com.moez.QKSMS.QKSMSApp;
 import com.moez.QKSMS.R;
-import com.moez.QKSMS.common.DialogHelper;
-import com.moez.QKSMS.common.DonationManager;
 import com.moez.QKSMS.common.LiveViewManager;
 import com.moez.QKSMS.common.QKPreferences;
 import com.moez.QKSMS.common.utils.ColorUtils;
@@ -263,12 +262,6 @@ public abstract class QKActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_settings:
                 startActivity(SettingsActivity.class);
-                return true;
-            case R.id.menu_changelog:
-                DialogHelper.showChangelog(this);
-                return true;
-            case R.id.menu_donate:
-                DonationManager.getInstance(this).showDonateDialog();
                 return true;
         }
 
