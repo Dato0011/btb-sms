@@ -32,7 +32,7 @@ android {
         abortOnError false
         disable 'InvalidPackage'
     }
-    compileSdkVersion 22
+    compileSdkVersion 21
     buildToolsVersion '25.0.2'
     defaultConfig {
         versionCode 1
