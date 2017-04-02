@@ -17,18 +17,18 @@
 
 package com.android.mms.transaction;
 
-import java.io.IOException;
-
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
+import com.bitblocker.messenger.mmssms.Utils;
 import com.google.android.mms.MmsException;
 import com.google.android.mms.pdu_alt.EncodedStringValue;
 import com.google.android.mms.pdu_alt.PduComposer;
 import com.google.android.mms.pdu_alt.PduPersister;
 import com.google.android.mms.pdu_alt.ReadRecInd;
-import com.moez.QKSMS.mmssms.Utils;
+
+import java.io.IOException;
 
 /**
  * The ReadRecTransaction is responsible for sending read report

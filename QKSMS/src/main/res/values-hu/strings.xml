@@ -530,19 +530,19 @@
   <string name="no_conversations">Nincsenek beszélgetések.</string>
   <!-- Show this in the middle of the main activity when loading conversations [CHAR LIMIT=none] -->
   <string name="loading_conversations">Beszélgetések betöltése.</string>
-  <!-- Tells the user that QKSMS isn't the default SMS app -->
+  <!-- Tells the user that messenger isn't the default SMS app -->
   <string name="not_default">SMS alapértelmezés</string>
-  <!-- Tells the user they need to set QKSMS as the default app in order to use this feature -->
+  <!-- Tells the user they need to set messenger as the default app in order to use this feature -->
   <string name="default_info">A QKSMS kell legyen az alapértelmezett SMS alkalmazás</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as read -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to mark messages as read -->
   <string name="not_default_mark_read">A QKSMS kell legyen az alapértelmezett SMS alkalmazás, hogy megjelölhesse az üzeneteket olvasottként</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as unread -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to mark messages as unread -->
   <string name="not_default_mark_unread">A QKSMS kell legyen az alapértelmezett SMS alkalmazás, hogy megjelölhesse az üzeneteket olvasatlanként</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to send messages -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to send messages -->
   <string name="not_default_delete">Üzenetek törléséhez a QKSMS kell legyen az alapértelmezett SMS alkalmazás</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to delete messages -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to delete messages -->
   <string name="not_default_send">Üzenetek küldéséhez a QKSMS kell legyen az alapértelmezett SMS alkalmazás</string>
-  <!-- Tells the user they should set QKSMS as the default messaging app -->
+  <!-- Tells the user they should set messenger as the default messaging app -->
   <string name="not_default_first">Néhány dolog csak azután fog működni, hogy a QKSMS az alapértelmezett SMS alkalmazás</string>
   <string name="delayed_messaging_info">A késleltetett üzenetküldés lehetővé teszi az üzenetek küldésének leállítását. Az alapértelmezett működést módosíthatja a Beállításokban</string>
   <string name="delayed_duration_bounds_error">Az időtartam 1 és 30 másodper között kel llennie</string>

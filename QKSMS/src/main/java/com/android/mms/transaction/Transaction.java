@@ -21,8 +21,8 @@ package com.android.mms.transaction;
 import android.content.Context;
 
 import com.android.mms.util.SendingProgressTokenManager;
+import com.bitblocker.messenger.mmssms.Utils;
 import com.google.android.mms.MmsException;
-import com.moez.QKSMS.mmssms.Utils;
 
 import java.io.IOException;
 
