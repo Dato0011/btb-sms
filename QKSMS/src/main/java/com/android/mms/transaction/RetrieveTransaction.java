@@ -27,7 +27,10 @@ import android.preference.PreferenceManager;
 import android.provider.Telephony.Mms;
 import android.text.TextUtils;
 import android.util.Log;
+
 import com.android.mms.util.DownloadManager;
+import com.bitblocker.messenger.MmsConfig;
+import com.bitblocker.messenger.mmssms.Utils;
 import com.google.android.mms.MmsException;
 import com.google.android.mms.pdu_alt.AcknowledgeInd;
 import com.google.android.mms.pdu_alt.EncodedStringValue;
@@ -36,8 +39,6 @@ import com.google.android.mms.pdu_alt.PduHeaders;
 import com.google.android.mms.pdu_alt.PduParser;
 import com.google.android.mms.pdu_alt.PduPersister;
 import com.google.android.mms.pdu_alt.RetrieveConf;
-import com.moez.QKSMS.MmsConfig;
-import com.moez.QKSMS.mmssms.Utils;
 
 import java.io.IOException;
 
@@ -146,7 +147,7 @@ public class RetrieveTransaction extends Transaction implements Runnable {
                 boolean group;
 
                 try {
-                    group = com.moez.QKSMS.mmssms.Transaction.settings.getGroup();
+                    group = com.bitblocker.messenger.mmssms.Transaction.settings.getGroup();
                 } catch (Exception e) {
                     group = PreferenceManager.getDefaultSharedPreferences(mContext).getBoolean("pref_key_compose_group", true);
                 }
@@ -188,7 +189,7 @@ public class RetrieveTransaction extends Transaction implements Runnable {
                 mTransactionState.setContentUri(mUri);
                 Log.e(TAG, "Retrieval failed.");
             } else {
-                mContext.sendBroadcast(new Intent(com.moez.QKSMS.mmssms.Transaction.NOTIFY_OF_MMS));
+                mContext.sendBroadcast(new Intent(com.bitblocker.messenger.mmssms.Transaction.NOTIFY_OF_MMS));
             }
             notifyObservers();
         }

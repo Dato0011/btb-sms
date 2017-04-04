@@ -531,19 +531,19 @@
   <string name="no_conversations">Нема разговора.</string>
   <!-- Show this in the middle of the main activity when loading conversations [CHAR LIMIT=none] -->
   <string name="loading_conversations">Учитавање разговора.</string>
-  <!-- Tells the user that QKSMS isn't the default SMS app -->
+  <!-- Tells the user that messenger isn't the default SMS app -->
   <string name="not_default">Подразумавана СМС аплиакција</string>
-  <!-- Tells the user they need to set QKSMS as the default app in order to use this feature -->
+  <!-- Tells the user they need to set messenger as the default app in order to use this feature -->
   <string name="default_info">Да бисте то урадили QKSMS мора бити основна апликација за СМС</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as read -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to mark messages as read -->
   <string name="not_default_mark_read">QKSMS мора да буде Ваша основна апликација за СМС да бисте поруке означили као прочитане</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as unread -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to mark messages as unread -->
   <string name="not_default_mark_unread">QKSMS мора да буде Ваша основна апликација за СМС да бисте поруке означили као непрочитане</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to send messages -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to send messages -->
   <string name="not_default_delete">QKSMS мора да буде Ваша основна апликација за СМС да бисте обрисали поруке</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to delete messages -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to delete messages -->
   <string name="not_default_send">QKSMS мора да буде Ваша основна апликација за СМС да бисте слали поруке</string>
-  <!-- Tells the user they should set QKSMS as the default messaging app -->
+  <!-- Tells the user they should set messenger as the default messaging app -->
   <string name="not_default_first">Неке ствари неће радити док не поставите QKSMS као основну СМС апликацију</string>
   <string name="delayed_messaging_info">Одложено слање Вам омогућава да откажете поруке пре него што се пошаљу. То, и још што-шта можете наћи у подешавањима</string>
   <string name="delayed_duration_bounds_error">Трајање мора бити између 1 и 30 секунди</string>

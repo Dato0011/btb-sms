@@ -9,7 +9,7 @@
     android:minHeight="56dp"
     app:theme="@style/ActionBarTheme">
 
-    <com.moez.QKSMS.ui.view.QKTextView
+    <com.bitblocker.messenger.ui.view.QKTextView
         android:id="@+id/toolbar_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

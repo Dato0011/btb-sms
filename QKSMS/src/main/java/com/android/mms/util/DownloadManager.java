@@ -28,11 +28,12 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.bitblocker.messenger.R;
 import com.google.android.mms.MmsException;
 import com.google.android.mms.pdu_alt.EncodedStringValue;
 import com.google.android.mms.pdu_alt.NotificationInd;
 import com.google.android.mms.pdu_alt.PduPersister;
-import com.moez.QKSMS.R;
 
 public class DownloadManager {
     private static final String TAG = "DownloadManager";

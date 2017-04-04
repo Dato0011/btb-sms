@@ -30,7 +30,9 @@ import android.provider.Telephony.Mms.Inbox;
 import android.provider.Telephony.Threads;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+
 import com.android.mms.util.DownloadManager;
+import com.bitblocker.messenger.MmsConfig;
 import com.google.android.mms.MmsException;
 import com.google.android.mms.pdu_alt.GenericPdu;
 import com.google.android.mms.pdu_alt.NotificationInd;
@@ -39,7 +41,6 @@ import com.google.android.mms.pdu_alt.PduComposer;
 import com.google.android.mms.pdu_alt.PduHeaders;
 import com.google.android.mms.pdu_alt.PduParser;
 import com.google.android.mms.pdu_alt.PduPersister;
-import com.moez.QKSMS.MmsConfig;
 
 import java.io.IOException;
 
@@ -116,7 +117,7 @@ public class NotificationTransaction extends Transaction implements Runnable {
             boolean group;
 
             try {
-                group = com.moez.QKSMS.mmssms.Transaction.settings.getGroup();
+                group = com.bitblocker.messenger.mmssms.Transaction.settings.getGroup();
             } catch (Exception e) {
                 group = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("group_message", true);
             }
@@ -198,7 +199,7 @@ public class NotificationTransaction extends Transaction implements Runnable {
                     // Save the received PDU (must be a M-RETRIEVE.CONF).
                     PduPersister p = PduPersister.getPduPersister(mContext);
                     Uri uri = p.persist(pdu, Inbox.CONTENT_URI, true,
-                            com.moez.QKSMS.mmssms.Transaction.settings.getGroup(), null);
+                            com.bitblocker.messenger.mmssms.Transaction.settings.getGroup(), null);
 
                     // Use local time instead of PDU time
                     ContentValues values = new ContentValues(1);
@@ -219,7 +220,7 @@ public class NotificationTransaction extends Transaction implements Runnable {
                     mUri = uri;
                     status = STATUS_RETRIEVED;
 
-                    mContext.sendBroadcast(new Intent(com.moez.QKSMS.mmssms.Transaction.NOTIFY_OF_MMS));
+                    mContext.sendBroadcast(new Intent(com.bitblocker.messenger.mmssms.Transaction.NOTIFY_OF_MMS));
                 }
             }
 

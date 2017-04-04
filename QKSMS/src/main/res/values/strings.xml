@@ -103,7 +103,7 @@
     <!--Title for date received of a message in message details popup-->
     <string name="details_date_received">Date received</string>
     <!--Title for rate snackbar-->
-    <string name="rate_title">Like QKSMS?</string>
+    <string name="rate_title">Like BitBlocker Messenger?</string>
     <!--Title for rate button-->
     <string name="rate_action">Rate</string>
 
@@ -126,7 +126,7 @@
     <string name="pref_theme">Theme color</string>
     <string name="pref_theme_summary_alt">Tap to change theme</string>
     <string name="pref_icon">Icon color</string>
-    <string name="pref_icon_summary">Tap to change the QKSMS icon color</string>
+    <string name="pref_icon_summary">Tap to change the BitBlocker Messenger icon color</string>
     <string name="pref_status_tint">Tinted status bar</string>
     <string name="pref_navigation_tint">Tinted navigation bar</string>
     <string name="pref_background">Background color</string>
@@ -260,20 +260,19 @@
     <string name="pref_navigation_compat">Navigation bar fix</string>
     <string name="pref_navigation_compat_summary">Fixes issues caused by immersive mode, Tinted Status Bar (Xposed), or custom DPI settings</string>
 
-    <string name="pref_about_version_title">QKSMS version</string>
+    <string name="pref_about_version_title">BitBlocker Messenger version</string>
     <string name="pref_about_authors_title">Authors</string>
-    <string name="pref_about_authors_summary">Moez Bhatti</string>
+    <string name="pref_about_authors_summary">Original Author: Moez Bhatti. Extended by BitBlocker LTD</string>
     <string name="pref_changelog_summary">Tap to view changelog</string>
     <string name="pref_about_thanks_title">Thank you</string>
     <string name="pref_about_thanks_summary">Tap to view open-source contributors</string>
     <string name="pref_donate_title">Donate</string>
-    <string name="pref_donate_summary">QKSMS is free. Help support us by donating!</string>
-    <string name="pref_about_gplus_title">Google+</string>
-    <string name="pref_about_gplus_summary">Join the QKSMS Beta Testing community on Google+</string>
+    <string name="pref_about_btb_title">BitBlocker</string>
+    <string name="pref_about_btb_summary">http://www.bitblocker.io</string>
     <string name="pref_about_github_title">GitHub</string>
-    <string name="pref_about_github_summary">QKSMS is open source. Contribute and report issues on GitHub</string>
+    <string name="pref_about_github_summary">BitBlocker Messenger is open source. Contribute and report issues on GitHub</string>
     <string name="pref_about_crowdin_title">Crowdin</string>
-    <string name="pref_about_crowdin_summary">Join the QKSMS translation project on Crowdin</string>
+    <string name="pref_about_crowdin_summary">Join the BitBlocker Messenger translation project on Crowdin</string>
 
     <!--Preference subcategory-->
     <string name="pref_subcat_theme">Theme</string>
@@ -349,7 +348,7 @@
     <string name="delivery_header_title">Report</string>
 
     <!--Text for app restart confirmation dialog-->
-    <string name="restart_message">These changes will take effect the next time QKSMS is opened</string>
+    <string name="restart_message">These changes will take effect the next time BitBlocker Messenger is opened</string>
     <!--Dialog title for asking if a user wants to delete a conversation-->
     <string name="delete_conversation">Delete conversations</string>
     <!--Dialog title for asking if a user wants to delete all failed messages-->
@@ -361,11 +360,11 @@
     <!--(Unused) Dialog title shown if APNs have not been set-->
     <string name="apns_not_set">APNs not set</string>
     <!--(Unused) Dialog description shown if APNs have not been set-->
-    <string name="apns_not_set_description">It appears that your APNs have not been set. This means that MMS will not work properly. Please press okay to have QKSMS find them for you :)</string>
+    <string name="apns_not_set_description">It appears that your APNs have not been set. This means that MMS will not work properly. Please press okay to have BitBlocker Messenger find them for you :)</string>
     <!--Dialog title show if MMS hasn't been configured-->
     <string name="set_up_mms_title">Set up MMS?</string>
     <!--Dialog description shown if MMS hasn't yet been configured-->
-    <string name="set_up_mms_description">It appears that MMS hasn\'t been configured in QKSMS yet. Press okay automatically configure MMS.</string>
+    <string name="set_up_mms_description">It appears that MMS hasn\'t been configured in BitBlocker Messenger yet. Press okay automatically configure MMS.</string>
 
     <!-- Dialog message text explaining that a draft message will not be saved due to invalid recipients -->
     <string name="discard_message_reason">Your message will be discarded because it has no valid recipients.</string>
@@ -377,7 +376,7 @@
     <!--Notification action to reply to a message-->
     <string name="reply">Reply</string>
     <!--Notification action to reply to a message-->
-    <string name="reply_qksms">Reply via QKSMS</string>
+    <string name="reply_qksms">Reply via BitBlocker Messenger</string>
     <!--Notification action to mark a message as read-->
     <string name="read">Read</string>
     <!--Notification action to mark a message as read-->
@@ -564,20 +563,20 @@
     <string name="no_conversations">No conversations.</string>
     <!-- Show this in the middle of the main activity when loading conversations [CHAR LIMIT=none] -->
     <string name="loading_conversations">Loading conversations.</string>
-    <!-- Tells the user that QKSMS isn't the default SMS app -->
+    <!-- Tells the user that BitBlocker Messenger isn't the default SMS app -->
     <string name="not_default">Default SMS</string>
-    <!-- Tells the user they need to set QKSMS as the default app in order to use this feature -->
-    <string name="default_info">QKSMS needs to be your SMS app to do that</string>
-    <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as read -->
-    <string name="not_default_mark_read">QKSMS must be your SMS app to mark messages read</string>
-    <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as unread -->
-    <string name="not_default_mark_unread">QKSMS must be your SMS app to mark messages unread</string>
-    <!-- Tells the user they need to set QKSMS as the default messaging app in order to send messages -->
-    <string name="not_default_delete">QKSMS must be your SMS app to delete messages</string>
-    <!-- Tells the user they need to set QKSMS as the default messaging app in order to delete messages -->
-    <string name="not_default_send">QKSMS must be your SMS app to send messages</string>
-    <!-- Tells the user they should set QKSMS as the default messaging app -->
-    <string name="not_default_first">Some things won\'t work until QKSMS is the default SMS app</string>
+    <!-- Tells the user they need to set BitBlocker Messenger as the default app in order to use this feature -->
+    <string name="default_info">BitBlocker Messenger needs to be your SMS app to do that</string>
+    <!-- Tells the user they need to set BitBlocker Messenger as the default messaging app in order to mark messages as read -->
+    <string name="not_default_mark_read">BitBlocker Messenger must be your SMS app to mark messages read</string>
+    <!-- Tells the user they need to set BitBlocker Messenger as the default messaging app in order to mark messages as unread -->
+    <string name="not_default_mark_unread">BitBlocker Messenger must be your SMS app to mark messages unread</string>
+    <!-- Tells the user they need to set BitBlocker Messenger as the default messaging app in order to send messages -->
+    <string name="not_default_delete">BitBlocker Messenger must be your SMS app to delete messages</string>
+    <!-- Tells the user they need to set BitBlocker Messenger as the default messaging app in order to delete messages -->
+    <string name="not_default_send">BitBlocker Messenger must be your SMS app to send messages</string>
+    <!-- Tells the user they should set BitBlocker Messenger as the default messaging app -->
+    <string name="not_default_first">Some things won\'t work until BitBlocker Messenger is the default SMS app</string>
     <string name="delayed_messaging_info">Delayed messaging allows you to cancel messages before they send. Change the default behavior and more in Settings</string>
     <string name="delayed_duration_bounds_error">Duration must be between 1 and 30 seconds</string>
 
@@ -589,7 +588,7 @@
     <!-- Dialog title for updating app icon color -->
     <string name="update_icon_title">Update icon color</string>
     <!-- Dialog message for updating app icon color -->
-    <string name="update_icon_message">QKSMS must be restarted when changing the icon color</string>
+    <string name="update_icon_message">BitBlocker Messenger must be restarted when changing the icon color</string>
 
     <string name="dialog_conversation_details_title">Conversation details</string>
     <string name="dialog_conversation_details_last_message_date">Last message date</string>
@@ -650,7 +649,7 @@
     <!--Toast shown to thank user for donating-->
     <string name="thanks_2">Thanks for the donation! I love you.</string>
     <!--Toast shown to thank user for donating-->
-    <string name="thanks_3">Thanks for donating! You\'re helping QKSMS become the best texting app ever made.</string>
+    <string name="thanks_3">Thanks for donating! You\'re helping BitBlocker Messenger become the best texting app ever made.</string>
     <!--Toast shown to thank user for donating-->
     <string name="thanks_4">Thanks for the donation! You\'re awesome.</string>
 
@@ -679,10 +678,10 @@
     <string name="attachment_camera_error">The camera could not be opened</string>
     <string name="pref_max_mms_attachment_size">Maximum MMS attachment size</string>
     <string name="error_no_recipients">Select some contacts to send this message to!</string>
-    <string name="error_file_not_found">QKSMS can\'t access the file you\'re trying to share!</string>
+    <string name="error_file_not_found">BitBlocker Messenger can\'t access the file you\'re trying to share!</string>
     <string name="sending_blocked_welcome_screen_message">Hold up! You\'ll get to send real messages in a minute!</string>
     <string name="notification_colored_icon_ready">Touch to add to your launcher from home screen.</string>
-    <string name="notification_title_colored_icon_ready">QKSMS colored icon is ready</string>
+    <string name="notification_title_colored_icon_ready">BitBlocker Messenger colored icon is ready</string>
     <string name="icon_ready">Your new icon is ready!</string>
     <string name="icon_ready_message">You can now add it to your home screen again with the updated color.</string>
     <string name="dont_ask_again">Don\'t ask again</string>
@@ -691,7 +690,7 @@
 
     <!-- MMS DIALOG SETUP STRINGS -->
     <string name="mms_setup_set_up_mms_title">Set up MMS?</string>
-    <string name="mms_setup_set_up_mms_body">It appears that MMS isn\'t set up in QKSMS. Press okay to automatically configure MMS.</string>
+    <string name="mms_setup_set_up_mms_body">It appears that MMS isn\'t set up in BitBlocker Messenger. Press okay to automatically configure MMS.</string>
 
     <string name="mms_setup_setting_up_later_title">Setting up MMS later</string>
     <string name="mms_setup_setting_up_later_body">Visit the MMS section of Settings to try automatic configuration, contact support, or enter your own configuration.</string>
@@ -717,7 +716,7 @@
     <string name="pref_mms_contact_support">Contact Support</string>
     <string name="pref_category_sending_mms">Sending MMS</string>
     <string name="pref_category_mms_configuration">MMS Configuration</string>
-    <string name="pref_mms_contact_support_summary">Contact the QKSMS team for help setting up MMS</string>
+    <string name="pref_mms_contact_support_summary">Contact the BitBlocker Messenger team for help setting up MMS</string>
     <string name="pref_markdown_enabled">Text formatting</string>
     <string name="pref_markdown_enabled_summary">Use markdown syntax to get bold, underline, and italics in your messages</string>
     <string name="want_read_indicators">Want read indicators?</string>

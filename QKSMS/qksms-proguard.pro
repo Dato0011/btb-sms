@@ -7,10 +7,10 @@
 -keep class android.location.** { *; }
 
 #
-# See com.moez.QKSMS.ui.mms.PresenterFactory---it uses reflect
+# See bitblockerlocker.messenger.ui.mms.PresenterFactory---it uses reflect
 #
--keep class com.moez.QKSMS.ui.mms.MmsThumbnailPresenter { *; }
--keep class com.moez.QKSMS.ui.mms.SlideshowPresenter { *; }
+-keep class bitblocker.QKSMS.ui.mms.MmsThumbnailPresenter { *; }
+-keep class bitblocker.QKSMS.ui.mms.SlideshowPresenter { *; }
 -keep class com.android.internal.util.ArrayUtils { *; }
 
 #

@@ -22,9 +22,10 @@ import android.content.Context;
 import android.net.NetworkUtils;
 import android.text.TextUtils;
 import android.util.Log;
-import com.moez.QKSMS.MmsConfig;
-import com.moez.QKSMS.mmssms.Transaction;
-import com.moez.QKSMS.mmssms.Utils;
+
+import com.bitblocker.messenger.MmsConfig;
+import com.bitblocker.messenger.mmssms.Transaction;
+import com.bitblocker.messenger.mmssms.Utils;
 
 /**
  * Container of transaction settings. Instances of this class are contained
