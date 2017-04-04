@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.bitblocker.messenger.db.MySQLiteHelper;
+import com.bitblocker.messenger.db.SQLiteHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,10 +26,10 @@ public class Repository implements IRepository {
     public static final short SENDER_ID_NUMBER    = 202;
     public static final short THREAD_HAS_SENT_SMS = 203;
 
-    private final MySQLiteHelper dbFactory;
+    private final SQLiteHelper dbFactory;
 
     public Repository(Context context) {
-        dbFactory = new MySQLiteHelper(context);
+        dbFactory = new SQLiteHelper(context);
     }
 
     private Keyword cursorToKeyword(Cursor cursor) {
@@ -60,8 +60,8 @@ public class Repository implements IRepository {
         SQLiteDatabase database = dbFactory.getReadableDatabase();
         List<Keyword> result = new ArrayList<Keyword>();
 
-        Cursor cursor = database.query(MySQLiteHelper.TABLE_KEYWORD,
-                new String[] { MySQLiteHelper.COLUMN_KEYWORD, MySQLiteHelper.COLUMN_MODIFIER, MySQLiteHelper.COLUMN_TYPE},
+        Cursor cursor = database.query(SQLiteHelper.TABLE_KEYWORD,
+                new String[] { SQLiteHelper.COLUMN_KEYWORD, SQLiteHelper.COLUMN_MODIFIER, SQLiteHelper.COLUMN_TYPE},
                 null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -79,8 +79,8 @@ public class Repository implements IRepository {
         SQLiteDatabase database = dbFactory.getReadableDatabase();
         Map<Short, ScoreValue> result = new HashMap<>();
 
-        Cursor cursor = database.query(MySQLiteHelper.TABLE_SCORE_VALUE,
-                new String[] { MySQLiteHelper.COLUMN_ID, MySQLiteHelper.COLUMN_VALUE },
+        Cursor cursor = database.query(SQLiteHelper.TABLE_SCORE_VALUE,
+                new String[] { SQLiteHelper.COLUMN_ID, SQLiteHelper.COLUMN_VALUE },
                 null, null, null, null, null);
 
         cursor.moveToFirst();
@@ -100,8 +100,8 @@ public class Repository implements IRepository {
         SQLiteDatabase database = dbFactory.getReadableDatabase();
         Map<Short, List<ScoreCombination>> result = new HashMap<>();
 
-        Cursor cursor = database.query(MySQLiteHelper.TABLE_COMBINATION,
-                new String[] { MySQLiteHelper.COLUMN_PRIMARY, MySQLiteHelper.COLUMN_SECONDARY, MySQLiteHelper.COLUMN_MULTIPLIER },
+        Cursor cursor = database.query(SQLiteHelper.TABLE_COMBINATION,
+                new String[] { SQLiteHelper.COLUMN_PRIMARY, SQLiteHelper.COLUMN_SECONDARY, SQLiteHelper.COLUMN_MULTIPLIER },
                 null, null, null, null, null);
 
         cursor.moveToFirst();
@@ -128,9 +128,9 @@ public class Repository implements IRepository {
     @Override
     public short getThreshold() {
         SQLiteDatabase database = dbFactory.getReadableDatabase();
-        Cursor cursor = database.query(MySQLiteHelper.TABLE_META,
-                new String[] { MySQLiteHelper.COLUMN_VALUE },
-                MySQLiteHelper.COLUMN_ID + "=?",
+        Cursor cursor = database.query(SQLiteHelper.TABLE_META,
+                new String[] { SQLiteHelper.COLUMN_VALUE },
+                SQLiteHelper.COLUMN_ID + "=?",
                 new String[] { String.valueOf(META_THRESHOLD) },
                 null, null, null);
 
