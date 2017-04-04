@@ -19,7 +19,7 @@ import com.bitblocker.messenger.antispam.ScoreValue;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLiteHelper extends SQLiteOpenHelper {
+public class SQLiteHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_COMBINATION = "combination";
     public static final String COLUMN_ID = "_id";
@@ -38,7 +38,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_META = "meta";
 
     private static final String DATABASE_NAME = "btb.antispam";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Database creation sql statement
     private static final String CREATE_COMBINATION = "CREATE TABLE "
@@ -86,6 +86,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
         /*** KEYWORDS ***/
         List<Keyword> keywords = new ArrayList<Keyword>();
+        keywords.add(new Keyword("24/7", Repository.KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         keywords.add(new Keyword("ichqare", Repository.KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         keywords.add(new Keyword("gtavazob", Repository.KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         keywords.add(new Keyword("dagvikavshirdi", Repository.KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
@@ -93,6 +94,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         keywords.add(new Keyword("aqcia", Repository.KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         keywords.add(new Keyword("iafad", Repository.KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         keywords.add(new Keyword("iapad", Repository.KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
+        keywords.add(new Keyword("fasebi", Repository.KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
+        keywords.add(new Keyword("pasebi", Repository.KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         keywords.add(new Keyword("sheidzine", Repository.KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         keywords.add(new Keyword("fasdakleb", Repository.KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
         keywords.add(new Keyword("pasdakleb", Repository.KEYWORD_MODIFIER_HIGH, KeywordType.WORD));
@@ -104,20 +107,22 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
         keywords.add(new Keyword("\\d{2}%", Repository.KEYWORD_MODIFIER_HIGH, KeywordType.REGEX));
         keywords.add(new Keyword("\\b\\w+\\s\\d{5}\\b", Repository.KEYWORD_MODIFIER_HIGH, KeywordType.REGEX));
-        keywords.add(new Keyword("\\bstop.\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        keywords.add(new Keyword("\\bno.\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        keywords.add(new Keyword("\\boff.\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        keywords.add(new Keyword("\\bnosms\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        keywords.add(new Keyword("\\bnosms.\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        keywords.add(new Keyword("\\bno.sms.\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        keywords.add(new Keyword("\\bstop\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
-        keywords.add(new Keyword("\\bstop.\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        keywords.add(new Keyword("\\bstop.?\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        keywords.add(new Keyword("\\bstop.? \\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        keywords.add(new Keyword("\\bno.?\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        keywords.add(new Keyword("\\bno.? \\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        keywords.add(new Keyword("off.?\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        keywords.add(new Keyword("off.? \\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        keywords.add(new Keyword("\\bno.?sms.?\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        keywords.add(new Keyword("\\bno.?sms.? \\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        keywords.add(new Keyword("\\bstop.?\\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
+        keywords.add(new Keyword("\\bstop.? \\d{5}\\b", Repository.KEYWORD_MODIFIER_CRITICAL, KeywordType.REGEX));
 
         for(ScoreValue score: scores) {
             ContentValues values = new ContentValues();
             values.put(COLUMN_ID, score.getId());
             values.put(COLUMN_VALUE, score.getValue());
-            database.insert(MySQLiteHelper.TABLE_SCORE_VALUE, null, values);
+            database.insert(SQLiteHelper.TABLE_SCORE_VALUE, null, values);
         }
 
         for(ScoreCombination combination: combinations) {
@@ -125,7 +130,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             values.put(COLUMN_PRIMARY, combination.getPrimary());
             values.put(COLUMN_SECONDARY, combination.getSecondary());
             values.put(COLUMN_MULTIPLIER, combination.getMultiplier());
-            database.insert(MySQLiteHelper.TABLE_COMBINATION, null, values);
+            database.insert(SQLiteHelper.TABLE_COMBINATION, null, values);
         }
 
         for(Keyword keyword: keywords) {
@@ -133,16 +138,16 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             values.put(COLUMN_KEYWORD, keyword.getKeyword());
             values.put(COLUMN_MODIFIER, keyword.getModifier());
             values.put(COLUMN_TYPE, keyword.getType().getNumVal());
-            database.insert(MySQLiteHelper.TABLE_KEYWORD, null, values);
+            database.insert(SQLiteHelper.TABLE_KEYWORD, null, values);
         }
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, Repository.META_THRESHOLD);
-        values.put(COLUMN_VALUE, 150);
+        values.put(COLUMN_VALUE, 100);
         database.insert(TABLE_META, null, values);
     }
 
-    public MySQLiteHelper(Context context) {
+    public SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -157,10 +162,13 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(MySQLiteHelper.class.getName(),
+        Log.w(SQLiteHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
-        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_COMMENTS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_COMBINATION);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_KEYWORD);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_META);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SCORE_VALUE);
         onCreate(db);
     }
 }
