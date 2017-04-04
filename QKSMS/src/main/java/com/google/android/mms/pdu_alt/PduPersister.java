@@ -34,6 +34,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.bitblocker.messenger.mmssms.Utils;
 import com.google.android.mms.ContentType;
 import com.google.android.mms.InvalidHeaderValueException;
 import com.google.android.mms.MmsException;
@@ -42,7 +43,6 @@ import com.google.android.mms.util_alt.DrmConvertSession;
 import com.google.android.mms.util_alt.PduCache;
 import com.google.android.mms.util_alt.PduCacheEntry;
 import com.google.android.mms.util_alt.SqliteWrapper;
-import com.moez.QKSMS.mmssms.Utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

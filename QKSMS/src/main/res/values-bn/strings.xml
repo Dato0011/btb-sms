@@ -530,19 +530,19 @@
   <string name="no_conversations">কোন কথোপকথন নেই।</string>
   <!-- Show this in the middle of the main activity when loading conversations [CHAR LIMIT=none] -->
   <string name="loading_conversations">কথোপকথন লোড করা হচ্ছে।</string>
-  <!-- Tells the user that QKSMS isn't the default SMS app -->
+  <!-- Tells the user that messenger isn't the default SMS app -->
   <string name="not_default">পূর্ব-নির্ধারিত এসএমএস</string>
-  <!-- Tells the user they need to set QKSMS as the default app in order to use this feature -->
+  <!-- Tells the user they need to set messenger as the default app in order to use this feature -->
   <string name="default_info">কিউকে এসএমএস আপনার সেই এসএমএস অ্যাপ হওয়া প্রয়োজন</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as read -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to mark messages as read -->
   <string name="not_default_mark_read">কিউকে এসএমএস আপনার বার্তার পঠিত চিহ্নিত করার অ্যাপ হওয়া প্রয়োজন</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as unread -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to mark messages as unread -->
   <string name="not_default_mark_unread">কিউকে এসএমএস আপনার বার্তার অপঠিত চিহ্নিত করার অ্যাপ হওয়া আবশ্যক</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to send messages -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to send messages -->
   <string name="not_default_delete">কিউকে এসএমএস আপনার বার্তাগুলি মুছে ফেলার অ্যাপ হওয়া আবশ্যক</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to delete messages -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to delete messages -->
   <string name="not_default_send">কিউকে এসএমএস আপনার বার্তা প্রেরণের অ্যাপ হওয়া আবশ্যক</string>
-  <!-- Tells the user they should set QKSMS as the default messaging app -->
+  <!-- Tells the user they should set messenger as the default messaging app -->
   <string name="not_default_first">কিছু কিছু জিনিস ততক্ষণ কাজ করবে না যতক্ষণ পর্যন্ত না কিউকে এসএমএস কে পূর্ব-নির্ধারিত এসএমএস অ্যাপ হিসেবে সেট করা হবে।</string>
   <string name="delayed_messaging_info">বিলম্বিত বার্তা প্রেরণ করার আগে বার্তা বাতিল করতে আপনাকে সুযোগ করে দেয়। ডিফল্ট আচরণ ও অন্যান্য জিনিস সেটিংসে পরিবর্তন করুন</string>
   <string name="delayed_duration_bounds_error">স্থিতিকাল হতে হবে ১ এবং ৩০ সেকেন্ডের মধ্যে</string>

@@ -8,6 +8,10 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/menu_scan"
+        android:title="Scan for Spam" />
+
+    <item
         android:id="@+id/menu_settings"
         android:title="@string/menu_settings" />
 
@@ -16,11 +20,4 @@
         android:title="@string/pref_blocked_conversations"
         android:visible="false" />
 
-    <item
-        android:id="@+id/menu_changelog"
-        android:title="@string/menu_changelog" />
-
-    <item
-        android:id="@+id/menu_donate"
-        android:title="@string/menu_billing" />
 </menu>

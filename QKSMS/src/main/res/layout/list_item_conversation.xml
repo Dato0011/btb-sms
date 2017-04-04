@@ -22,7 +22,7 @@
         android:layout_marginTop="24dp"
         android:visibility="gone" />
 
-    <com.moez.QKSMS.ui.view.AvatarView
+    <com.bitblocker.messenger.ui.view.AvatarView
         android:id="@+id/conversation_list_avatar"
         android:layout_width="48dp"
         android:layout_height="48dp"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true">
 
-            <com.moez.QKSMS.ui.view.QKTextView
+            <com.bitblocker.messenger.ui.view.QKTextView
                 android:id="@+id/conversation_list_name"
                 style="@style/TextPrimary"
                 android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                 android:layout_weight="1"
                 android:minWidth="16dp" />
 
-            <com.moez.QKSMS.ui.view.QKTextView
+            <com.bitblocker.messenger.ui.view.QKTextView
                 android:id="@+id/conversation_list_date"
                 style="@style/TextTertiary"
                 android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
             android:animateLayoutChanges="true"
             android:gravity="top">
 
-            <com.moez.QKSMS.ui.view.QKTextView
+            <com.bitblocker.messenger.ui.view.QKTextView
                 android:id="@+id/conversation_list_snippet"
                 style="@style/TextSecondary"
                 android:layout_width="0dp"

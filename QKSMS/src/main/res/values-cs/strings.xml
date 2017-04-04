@@ -531,19 +531,19 @@
   <string name="no_conversations">Žádné konverzace.</string>
   <!-- Show this in the middle of the main activity when loading conversations [CHAR LIMIT=none] -->
   <string name="loading_conversations">Načítání konverzací…</string>
-  <!-- Tells the user that QKSMS isn't the default SMS app -->
+  <!-- Tells the user that messenger isn't the default SMS app -->
   <string name="not_default">Výchozí SMS aplikace</string>
-  <!-- Tells the user they need to set QKSMS as the default app in order to use this feature -->
+  <!-- Tells the user they need to set messenger as the default app in order to use this feature -->
   <string name="default_info">Pro vykonání této akce musí být aplikace QKSMS nastavena jako výchozí</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as read -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to mark messages as read -->
   <string name="not_default_mark_read">Pro označení zpráv jako přečtené musí být QKSMS výchozí SMS aplikací</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as unread -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to mark messages as unread -->
   <string name="not_default_mark_unread">Pro označení zpráv jako nepřečtené musí být QKSMS výchozí SMS aplikací</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to send messages -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to send messages -->
   <string name="not_default_delete">Pro možnost mazat zprávy musí být aplikace QKSMS nastavena jako výchozí SMS aplikace</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to delete messages -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to delete messages -->
   <string name="not_default_send">Pro možnost odesílat zprávy musí být aplikace QKSMS nastavena jako výchozí SMS aplikace</string>
-  <!-- Tells the user they should set QKSMS as the default messaging app -->
+  <!-- Tells the user they should set messenger as the default messaging app -->
   <string name="not_default_first">Některé funkce nebudou dostupné, dokud nebude QKSMS výchozí SMS aplikací</string>
   <string name="delayed_messaging_info">Zpožděné odesílání zpráv umožňuje zrušit odesílání zpráv před jejich odesláním. Výchozí chování a další volby lze upravit v nastavení aplikace.</string>
   <string name="delayed_duration_bounds_error">Prodleva musí být mezi 1 a 30 sekundami</string>

@@ -34,11 +34,12 @@ import android.provider.Telephony.Mms;
 import android.provider.Telephony.MmsSms;
 import android.provider.Telephony.MmsSms.PendingMessages;
 import android.util.Log;
+
 import com.android.mms.util.DownloadManager;
+import com.bitblocker.messenger.R;
 import com.google.android.mms.MmsException;
 import com.google.android.mms.pdu_alt.PduHeaders;
 import com.google.android.mms.pdu_alt.PduPersister;
-import com.moez.QKSMS.R;
 
 public class RetryScheduler implements Observer {
     private static final String TAG = "RetryScheduler";
@@ -245,11 +246,11 @@ public class RetryScheduler implements Observer {
         context.getContentResolver().update(msgUri, values, null, null);
          */
 
-        // context.sendBroadcast(new Intent(com.moez.QKSMS.send_message.Transaction.REFRESH));
-        // context.sendBroadcast(new Intent(com.moez.QKSMS.send_message.Transaction.NOTIFY_SMS_FAILURE));
+        // context.sendBroadcast(new Intent(com.bitblocker.messenger.send_message.Transaction.REFRESH));
+        // context.sendBroadcast(new Intent(com.bitblocker.messenger.send_message.Transaction.NOTIFY_SMS_FAILURE));
 
         // broadcast that mms has failed and you can notify user from there if you would like
-        context.sendBroadcast(new Intent(com.moez.QKSMS.mmssms.Transaction.MMS_ERROR));
+        context.sendBroadcast(new Intent(com.bitblocker.messenger.mmssms.Transaction.MMS_ERROR));
     }
 
     private void markMmsFailedToSend(Context context, Uri msgUri) {

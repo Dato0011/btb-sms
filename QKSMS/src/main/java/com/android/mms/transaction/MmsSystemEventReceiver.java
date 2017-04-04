@@ -23,10 +23,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.util.Log;
 
-import com.moez.QKSMS.mmssms.Utils;
+import com.bitblocker.messenger.mmssms.Utils;
 
 /**
  * MmsSystemEventReceiver receives the

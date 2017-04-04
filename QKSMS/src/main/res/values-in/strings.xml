@@ -529,19 +529,19 @@
   <string name="no_conversations">Tidak ada percakapan.</string>
   <!-- Show this in the middle of the main activity when loading conversations [CHAR LIMIT=none] -->
   <string name="loading_conversations">Memuat percakapan.</string>
-  <!-- Tells the user that QKSMS isn't the default SMS app -->
+  <!-- Tells the user that messenger isn't the default SMS app -->
   <string name="not_default">Aplikasi SMS Baku</string>
-  <!-- Tells the user they need to set QKSMS as the default app in order to use this feature -->
+  <!-- Tells the user they need to set messenger as the default app in order to use this feature -->
   <string name="default_info">QKSMS perlu menjadi aplikasi SMS baku untuk melakukan hal tersebut</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as read -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to mark messages as read -->
   <string name="not_default_mark_read">QKSMS harus menjadi aplikasi SMS baku untuk menandai pesan dibaca</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as unread -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to mark messages as unread -->
   <string name="not_default_mark_unread">QKSMS harus menjadi aplikasi SMS baku untuk menandai pesan belum dibaca</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to send messages -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to send messages -->
   <string name="not_default_delete">QKSMS harus menjadi aplikasi SMS baku untuk menghapus pesan</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to delete messages -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to delete messages -->
   <string name="not_default_send">QKSMS harus menjadi aplikasi SMS baku untuk mengirim pesan</string>
-  <!-- Tells the user they should set QKSMS as the default messaging app -->
+  <!-- Tells the user they should set messenger as the default messaging app -->
   <string name="not_default_first">Beberapa hal tidak akan bekerja sampai QKSMS menjadi aplikasi SMS baku</string>
   <string name="delayed_messaging_info">Pesan tertunda memungkinkan Anda membatalkan pesan sebelum mereka dikirimkan. Ubah perilaku bawaan dan lainnya di pengaturan</string>
   <string name="delayed_duration_bounds_error">Durasi harus antara 1 sampai 30 detik</string>
