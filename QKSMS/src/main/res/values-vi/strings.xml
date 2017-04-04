@@ -529,19 +529,19 @@
   <string name="no_conversations">Không có cuộc hội thoại nào.</string>
   <!-- Show this in the middle of the main activity when loading conversations [CHAR LIMIT=none] -->
   <string name="loading_conversations">Đang tải các cuộc hội thoại.</string>
-  <!-- Tells the user that QKSMS isn't the default SMS app -->
+  <!-- Tells the user that messenger isn't the default SMS app -->
   <string name="not_default">SMS mặc định</string>
-  <!-- Tells the user they need to set QKSMS as the default app in order to use this feature -->
+  <!-- Tells the user they need to set messenger as the default app in order to use this feature -->
   <string name="default_info">QKSMS cần phải là ứng dụng nhắn tin SMS của bạn để làm điều đó</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as read -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to mark messages as read -->
   <string name="not_default_mark_read">QKSMS cần phải là ứng dụng nhắn tin SMS của bạn để đánh dáu thư đã đọc</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as unread -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to mark messages as unread -->
   <string name="not_default_mark_unread">QKSMS must be your SMS app to mark messages unread</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to send messages -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to send messages -->
   <string name="not_default_delete">QKSMS cần phải là ứng dụng nhắn tin SMS của bạn để xóa tin nhắn</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to delete messages -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to delete messages -->
   <string name="not_default_send">QKSMS cần phải là ứng dụng nhắn tin SMS của bạn để gửi tin nhắn</string>
-  <!-- Tells the user they should set QKSMS as the default messaging app -->
+  <!-- Tells the user they should set messenger as the default messaging app -->
   <string name="not_default_first">Một số thứ sẽ không hoạt động cho đến khi QKSMS là ứng dụng nhắn tin mặc định</string>
   <string name="delayed_messaging_info">Hoãn gửi tin nhắn cho phép bạn hủy tin nhắn trước khi gửi nó. Thay đổi hành vi mặc định và nhiều hơn ở Cài đặt</string>
   <string name="delayed_duration_bounds_error">Thời gian phải từ 1 đến 30 giây</string>

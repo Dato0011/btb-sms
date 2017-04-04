@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.moez.QKSMS.ui.view.QKLinearLayout
+<com.bitblocker.messenger.ui.view.QKLinearLayout
     android:id="@+id/popup"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -47,4 +47,4 @@
         android:layout_gravity="bottom"
         android:clipToPadding="false" />
 
-</com.moez.QKSMS.ui.view.QKLinearLayout>
+</com.bitblocker.messenger.ui.view.QKLinearLayout>

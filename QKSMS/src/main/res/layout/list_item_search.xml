@@ -11,7 +11,7 @@
     android:paddingRight="16dp"
     android:paddingTop="8dp">
 
-    <com.moez.QKSMS.ui.view.AvatarView
+    <com.bitblocker.messenger.ui.view.AvatarView
         android:id="@+id/search_avatar"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.moez.QKSMS.ui.view.QKTextView
+            <com.bitblocker.messenger.ui.view.QKTextView
                 android:id="@+id/search_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
                 android:singleLine="true"
                 app:type="primary" />
 
-            <com.moez.QKSMS.ui.view.QKTextView
+            <com.bitblocker.messenger.ui.view.QKTextView
                 android:id="@+id/search_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
                 app:type="tertiary" />
         </LinearLayout>
 
-        <com.moez.QKSMS.ui.view.QKTextView
+        <com.bitblocker.messenger.ui.view.QKTextView
             android:id="@+id/search_snippet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

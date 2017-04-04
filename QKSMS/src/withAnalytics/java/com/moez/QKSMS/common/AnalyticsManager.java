@@ -1,4 +1,4 @@
-package com.moez.QKSMS.common;
+package com.bitblocker.messenger.common;
 
 import android.content.Context;
 import android.util.Log;
@@ -7,7 +7,7 @@ import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import com.moez.QKSMS.R;
+import com.bitblocker.messenger.R;
 
 public class AnalyticsManager implements AnalyticsManagerBase {
     private AnalyticsManager() {

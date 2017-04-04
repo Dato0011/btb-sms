@@ -530,19 +530,19 @@
   <string name="no_conversations">Não há conversas.</string>
   <!-- Show this in the middle of the main activity when loading conversations [CHAR LIMIT=none] -->
   <string name="loading_conversations">A carregar conversas.</string>
-  <!-- Tells the user that QKSMS isn't the default SMS app -->
+  <!-- Tells the user that messenger isn't the default SMS app -->
   <string name="not_default">Aplicação SMS padrão</string>
-  <!-- Tells the user they need to set QKSMS as the default app in order to use this feature -->
+  <!-- Tells the user they need to set messenger as the default app in order to use this feature -->
   <string name="default_info">O QKSMS tem de ser a aplicação padrão para o fazer</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as read -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to mark messages as read -->
   <string name="not_default_mark_read">O QKSMS tem de ser a aplicação padrão para marcar as mensagens como lidas</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to mark messages as unread -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to mark messages as unread -->
   <string name="not_default_mark_unread">O QKSMS tem de ser a aplicação padrão para marcar as mensagens como não lidas</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to send messages -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to send messages -->
   <string name="not_default_delete">O QKSMS tem de ser a aplicação padrão para poder apagar mensagens</string>
-  <!-- Tells the user they need to set QKSMS as the default messaging app in order to delete messages -->
+  <!-- Tells the user they need to set messenger as the default messaging app in order to delete messages -->
   <string name="not_default_send">O QKSMS tem de ser a aplicação padrão para poder enviar mensagens</string>
-  <!-- Tells the user they should set QKSMS as the default messaging app -->
+  <!-- Tells the user they should set messenger as the default messaging app -->
   <string name="not_default_first">Algumas funções não estão disponíveis se o QKSMS não for a aplicação padrão</string>
   <string name="delayed_messaging_info">O atraso no envio das mensagens permite-lhe cancelar o envio. Pode alterar o comportamento pré-definido nas definições.</string>
   <string name="delayed_duration_bounds_error">A duração tem que estar no intervalo 1-30 segundos</string>

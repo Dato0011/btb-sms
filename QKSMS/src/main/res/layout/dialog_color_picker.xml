@@ -12,7 +12,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
 
-        <com.moez.QKSMS.ui.view.QKTextView
+        <com.bitblocker.messenger.ui.view.QKTextView
             android:id="@+id/tab_1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -22,7 +22,7 @@
             android:text="@string/title_palette"
             app:type="primary_bold" />
 
-        <com.moez.QKSMS.ui.view.QKTextView
+        <com.bitblocker.messenger.ui.view.QKTextView
             android:id="@+id/tab_2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="320dp">
 
-        <com.moez.QKSMS.ui.view.colorpicker.ColorPickerPalette
+        <com.bitblocker.messenger.ui.view.colorpicker.ColorPickerPalette
             android:id="@+id/palette"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -63,7 +63,7 @@
                 android:layout_marginTop="16dp"
                 android:gravity="center_vertical">
 
-                <com.moez.QKSMS.ui.view.QKTextView
+                <com.bitblocker.messenger.ui.view.QKTextView
                     android:layout_width="24dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -80,7 +80,7 @@
                     android:layout_weight="1"
                     android:max="255" />
 
-                <com.moez.QKSMS.ui.view.QKTextView
+                <com.bitblocker.messenger.ui.view.QKTextView
                     android:id="@+id/red_value"
                     android:layout_width="36dp"
                     android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
                 android:layout_height="36dp"
                 android:gravity="center_vertical">
 
-                <com.moez.QKSMS.ui.view.QKTextView
+                <com.bitblocker.messenger.ui.view.QKTextView
                     android:layout_width="24dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -114,7 +114,7 @@
                     android:layout_weight="1"
                     android:max="255" />
 
-                <com.moez.QKSMS.ui.view.QKTextView
+                <com.bitblocker.messenger.ui.view.QKTextView
                     android:id="@+id/green_value"
                     android:layout_width="36dp"
                     android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
                 android:layout_marginBottom="16dp"
                 android:gravity="center_vertical">
 
-                <com.moez.QKSMS.ui.view.QKTextView
+                <com.bitblocker.messenger.ui.view.QKTextView
                     android:layout_width="24dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -149,7 +149,7 @@
                     android:layout_weight="1"
                     android:max="255" />
 
-                <com.moez.QKSMS.ui.view.QKTextView
+                <com.bitblocker.messenger.ui.view.QKTextView
                     android:id="@+id/blue_value"
                     android:layout_width="36dp"
                     android:layout_height="wrap_content"
@@ -167,14 +167,14 @@
                 android:focusableInTouchMode="true"
                 android:gravity="center_vertical">
 
-                <com.moez.QKSMS.ui.view.QKTextView
+                <com.bitblocker.messenger.ui.view.QKTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:text="@string/hint_hex"
                     app:type="primary" />
 
-                <com.moez.QKSMS.ui.view.QKEditText
+                <com.bitblocker.messenger.ui.view.QKEditText
                     android:id="@+id/hex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

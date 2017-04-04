@@ -17,8 +17,6 @@
 
 package com.android.mms.transaction;
 
-import java.util.Arrays;
-
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
@@ -31,6 +29,7 @@ import android.util.Log;
 
 import com.android.mms.util.RateController;
 import com.android.mms.util.SendingProgressTokenManager;
+import com.bitblocker.messenger.mmssms.Utils;
 import com.google.android.mms.pdu_alt.EncodedStringValue;
 import com.google.android.mms.pdu_alt.PduComposer;
 import com.google.android.mms.pdu_alt.PduHeaders;
@@ -38,7 +37,8 @@ import com.google.android.mms.pdu_alt.PduParser;
 import com.google.android.mms.pdu_alt.PduPersister;
 import com.google.android.mms.pdu_alt.SendConf;
 import com.google.android.mms.pdu_alt.SendReq;
-import com.moez.QKSMS.mmssms.Utils;
+
+import java.util.Arrays;
 
 /**
  * The SendTransaction is responsible for sending multimedia messages
