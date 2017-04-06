@@ -382,7 +382,7 @@
             android:name=".receiver.RemoteMessagingReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.moez.QKSMS.receiver.WearableIntentReceiver.REPLY" />
+                <action android:name="com.bitblocker.messenger.receiver.WearableIntentReceiver.REPLY" />
             </intent-filter>
         </receiver>
 
@@ -405,7 +405,7 @@
                 <data android:scheme="package" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.moez.QKSMS.action.PENDING_PACKAGE_CHANGE" />
+                <action android:name="com.bitblocker.messenger.action.PENDING_PACKAGE_CHANGE" />
             </intent-filter>
         </receiver>
 
@@ -439,35 +439,35 @@
             android:name=".mmssms.SentReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.moez.QKSMS.SMS_SENT" />
+                <action android:name="com.bitblocker.messenger.SMS_SENT" />
             </intent-filter>
         </receiver>
         <receiver
             android:name=".receiver.DeliveredReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.moez.QKSMS.SMS_DELIVERED" />
+                <action android:name="com.bitblocker.messenger.SMS_DELIVERED" />
             </intent-filter>
         </receiver>
         <receiver
             android:name=".receiver.MessageFailedReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.moez.QKSMS.NOTIFY_SMS_FAILURE" />
+                <action android:name="com.bitblocker.messenger.NOTIFY_SMS_FAILURE" />
             </intent-filter>
         </receiver>
         <receiver
             android:name=".receiver.MarkReadReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.moez.QKSMS.MARK_READ" />
+                <action android:name="com.bitblocker.messenger.MARK_READ" />
             </intent-filter>
         </receiver>
         <receiver
             android:name=".receiver.MarkSeenReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.moez.QKSMS.MARK_SEEN" />
+                <action android:name="com.bitblocker.messenger.MARK_SEEN" />
             </intent-filter>
         </receiver>
 
@@ -476,7 +476,7 @@
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.moez.QKSMS.intent.action.ACTION_NOTIFY_DATASET_CHANGED" />
+                <action android:name="com.bitblocker.messenger.intent.action.ACTION_NOTIFY_DATASET_CHANGED" />
             </intent-filter>
 
             <meta-data
@@ -507,7 +507,7 @@
 
         <service android:name=".service.ShouldIAnswerService">
             <intent-filter>
-                <action android:name="com.moez.QKSMS.ShouldIAnswerService" />
+                <action android:name="com.bitblocker.messenger.ShouldIAnswerService" />
             </intent-filter>
         </service>
 
